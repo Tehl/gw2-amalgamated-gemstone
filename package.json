@@ -1,0 +1,19 @@
+{
+  "name": "gw2-amalgamated-gemstone",
+  "version": "1.0.0",
+  "author": "Matt Howe",
+  "private": true,
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "prettier": "^1.5.3",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open"
+  },
+  "license": "MIT"
+}
