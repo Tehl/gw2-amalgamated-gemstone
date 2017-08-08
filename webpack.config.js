@@ -1,4 +1,6 @@
-var path = require("path");
+const path = require("path");
+const webpack = require("webpack");
+const production = process.env.NODE_ENV === "production";
 
 module.exports = {
   entry: "./src/index.js",
@@ -9,6 +11,7 @@ module.exports = {
   devServer: {
     contentBase: "./src/"
   },
+  devtool: production ? "source-map" : "eval-source-map",
   module: {
     rules: [
       {
@@ -32,5 +35,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      DEBUG: !production
+    })
+  ]
 };

@@ -3,7 +3,7 @@ import GridRow from "./GridRow";
 
 import "./recipeGrid.less";
 
-const RecipeGrid = ({ recipes, materials }) =>
+const Grid = ({ recipes, materials }) =>
   <table className="recipe-grid">
     <thead>
       <tr>
@@ -25,4 +25,4 @@ const RecipeGrid = ({ recipes, materials }) =>
     </tbody>
   </table>;
 
-export default RecipeGrid;
+export default Grid;
