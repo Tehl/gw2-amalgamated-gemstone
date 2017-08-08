@@ -1,5 +1,11 @@
 import React from "react";
+import RecipeGrid from "./RecipeGrid/Grid";
 
-const App = () => <h1>Hello World</h1>;
+const App = ({ recipes, materials }) =>
+  <div className="row">
+    <div className="col col-12">
+      <RecipeGrid recipes={recipes} materials={materials} />;
+    </div>
+  </div>;
 
 export default App;
