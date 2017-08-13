@@ -1,4 +1,4 @@
-import api from "./gw2api-test";
+import api from "./gw2api";
 
 function getMaterials(ids) {
   return Promise.all([

@@ -3,7 +3,7 @@ import GridRow from "./GridRow";
 
 import "./recipeGrid.less";
 
-const Grid = ({ recipes, materials }) =>
+const Grid = ({ recipes, materials, onBuyClick, onSellClick }) =>
   <table className="recipe-grid">
     <thead>
       <tr>
