@@ -3,10 +3,8 @@ import React from "react";
 import "./options.less";
 
 const Options = ({ sort, count, onSortChange, onCountChange }) =>
-  <div className="row text-center display-options">
-    <div className="col col-8" />
-
-    <div className="col col-2 option-count">
+  <div className="row auto text-center display-options">
+    <div className="col option-count">
       <label>
         Show
         <select value={count} onChange={onCountChange}>
@@ -19,7 +17,7 @@ const Options = ({ sort, count, onSortChange, onCountChange }) =>
       </label>
     </div>
 
-    <div className="col col-2 option-sort">
+    <div className="col option-sort">
       <label>
         Sort by
         <select value={sort} onChange={onSortChange}>
