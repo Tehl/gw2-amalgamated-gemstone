@@ -1,3 +1,4 @@
+import hash from "object-hash";
 import gemstoneDust from "./gemstone-dust";
 import gemstoneEcto from "./gemstone-ecto";
 import upscale from "./upscale";
@@ -26,4 +27,7 @@ upscale.forEach(potentialUpscale => {
   });
 });
 
-export default [...recipes, ...foundUpscales];
+export default [...recipes, ...foundUpscales].map(recipe => ({
+  ...recipe,
+  hash: hash(recipe)
+}));

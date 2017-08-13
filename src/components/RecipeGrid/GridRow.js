@@ -1,8 +1,8 @@
 import React from "react";
 import { formatPrice } from "../../logic/utility";
 
-const GridRow = ({ inputs, buyPrice, sellPrice, materials }) =>
-  <tr>
+const GridRow = ({ inputs, buyPrice, sellPrice, materials, className }) =>
+  <tr className={className}>
     <td className="ingredient-list">
       {inputs.map((item, idx) =>
         <span key={idx}>
