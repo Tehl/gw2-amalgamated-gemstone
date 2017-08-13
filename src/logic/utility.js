@@ -6,10 +6,20 @@ function formatPrice(price) {
   let gold = Math.floor(price / 10000);
   let remainder = price - gold * 10000;
 
-  var silver = Math.floor(remainder / 100);
-  var copper = remainder - silver * 100;
+  let silver = Math.floor(remainder / 100);
+  let copper = remainder - silver * 100;
 
-  return gold + "g " + silver + "s " + copper + "c";
+  let result = copper + "c";
+
+  if (silver || gold) {
+    result = silver + "s " + result;
+  }
+
+  if (gold) {
+    result = gold + "g " + result;
+  }
+
+  return result;
 }
 
 function formatRecipe(recipe, materials) {

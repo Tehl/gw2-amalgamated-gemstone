@@ -3,13 +3,15 @@ import GridRow from "./GridRow";
 
 import "./recipeGrid.less";
 
-const Grid = ({ recipes, materials, getClassName, onBuyClick, onSellClick }) =>
+const Grid = ({ recipes, materials, discountSource, getDiscount, getClassName, onBuyClick, onSellClick }) =>
   <table className="recipe-grid">
     <thead>
       <tr>
         <th>Ingredients</th>
         <th>Buy Price</th>
         <th>Sell Price</th>
+        <th>{discountSource} Discount (Item)</th>
+        <th>{discountSource} Discount (Stack)</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +22,8 @@ const Grid = ({ recipes, materials, getClassName, onBuyClick, onSellClick }) =>
           buyPrice={item.buyPrice}
           sellPrice={item.sellPrice}
           materials={materials}
+          discountSingle={getDiscount(item, false)}
+          discountStack={getDiscount(item, true)}
           className={getClassName(item)}
         />
       )}

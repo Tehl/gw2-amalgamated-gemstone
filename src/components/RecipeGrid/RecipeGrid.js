@@ -1,8 +1,13 @@
 import { connect } from "react-redux";
 import Grid from "./Grid";
 
+function getSortFieldName(sortField) {
+  return sortField + "Price";
+}
+
 function compareBy(sortField) {
-  return (a, b) => a[sortField + "Price"] - b[sortField + "Price"];
+  let fieldName = getSortFieldName(sortField);
+  return (a, b) => a[fieldName] - b[fieldName];
 }
 
 function visibleRecipes(recipes, count, sortField, target) {
@@ -31,6 +36,24 @@ function getItemClass(item, target, sortField) {
   return "item-expensive";
 }
 
+function getItemDiscount(item, target, sortField, stack) {
+  let fieldName = getSortFieldName(sortField);
+  let discount = target[fieldName] - item[fieldName];
+  if (stack) {
+    discount *= 250;
+  }
+  return discount;
+}
+
+function getDiscountSource(sort) {
+  switch (sort) {
+    case "buy":
+      return "Buy Price";
+    default:
+      return "Sell Price";
+  }
+}
+
 const mapStateToProps = state => {
   return {
     recipes: visibleRecipes(
@@ -40,7 +63,10 @@ const mapStateToProps = state => {
       state.target
     ),
     materials: state.materials,
-    getClassName: item => getItemClass(item, state.target, state.display.sort)
+    discountSource: getDiscountSource(state.display.sort),
+    getClassName: item => getItemClass(item, state.target, state.display.sort),
+    getDiscount: (item, stack) =>
+      getItemDiscount(item, state.target, state.display.sort, stack)
   };
 };
 
