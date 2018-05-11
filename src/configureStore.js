@@ -8,7 +8,7 @@ const defaultState = {};
 const configureStore = () => {
   const middleware = [thunk];
 
-  if (DEBUG) {
+  if (__DEBUG__) {
     middleware.push(createLogger());
   }
 

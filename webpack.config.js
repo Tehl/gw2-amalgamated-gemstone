@@ -1,11 +1,37 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+
 const production = process.env.NODE_ENV === "production";
+const chunkName = production ? "[name]-[chunkhash]" : "[name]";
+
+const extractCssPlugin = new ExtractTextPlugin({
+  filename: chunkName + ".css"
+});
+
+let plugins = [
+  new webpack.DefinePlugin({
+    __DEBUG__: !production
+  }),
+  new HtmlWebpackPlugin({
+    template: "src/index.html"
+  }),
+  extractCssPlugin
+];
+
+if (production) {
+  plugins = [...plugins, new CleanWebpackPlugin(["dist"])];
+}
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    vendor: ["./vendor/kube.css"],
+    app: "./src/index.js"
+  },
   output: {
-    filename: "bundle.js",
+    filename: chunkName + ".js",
     path: path.resolve(__dirname, "dist")
   },
   devServer: {
@@ -21,24 +47,46 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader", options: { importLoaders: 1 } }
-        ]
+        use: extractCssPlugin.extract({
+          fallback: "style-loader",
+          use: [{ loader: "css-loader" }]
+        })
       },
       {
         test: /\.less$/,
+        use: extractCssPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            { loader: "css-loader", options: { importLoaders: 1 } },
+            "less-loader"
+          ]
+        })
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
         use: [
-          { loader: "style-loader" },
-          { loader: "css-loader", options: { importLoaders: 1 } },
-          "less-loader"
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
         ]
       }
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      DEBUG: !production
-    })
-  ]
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: "initial",
+          name: "vendor",
+          priority: 10,
+          enforce: true
+        }
+      }
+    }
+  },
+  plugins: plugins
 };
