@@ -1,10 +1,7 @@
 import api from "./gw2api";
 
 function getMaterials(ids) {
-  return Promise.all([
-    api.getItems(ids),
-    api.getPrices(ids)
-  ]).then(res => {
+  return Promise.all([api.getItems(ids), api.getPrices(ids)]).then(res => {
     let materials = {};
 
     res[0].forEach(

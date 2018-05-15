@@ -5,8 +5,6 @@ import configureStore from "./configureStore";
 import App from "./components/App";
 import { loadRecipes } from "./actions/recipes";
 
-import "./style.less";
-
 const store = configureStore();
 
 ReactDOM.render(

@@ -11,7 +11,7 @@ const Grid = ({
   getClassName,
   onBuyClick,
   onSellClick
-}) =>
+}) => (
   <div className="row">
     <table className="recipe-grid">
       <thead>
@@ -38,7 +38,7 @@ const Grid = ({
         </tr>
       </thead>
       <tbody>
-        {recipes.map(item =>
+        {recipes.map(item => (
           <GridRow
             key={item.hash}
             inputs={item.inputs}
@@ -49,9 +49,10 @@ const Grid = ({
             discountStack={getDiscount(item, true)}
             className={getClassName(item)}
           />
-        )}
+        ))}
       </tbody>
     </table>
-  </div>;
+  </div>
+);
 
 export default Grid;

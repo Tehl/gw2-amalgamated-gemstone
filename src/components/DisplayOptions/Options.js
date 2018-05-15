@@ -2,7 +2,7 @@ import React from "react";
 
 import "./options.less";
 
-const Options = ({ sort, count, onSortChange, onCountChange }) =>
+const Options = ({ sort, count, onSortChange, onCountChange }) => (
   <div className="row auto text-center display-options">
     <div className="col option-count">
       <label>
@@ -26,6 +26,7 @@ const Options = ({ sort, count, onSortChange, onCountChange }) =>
         </select>
       </label>
     </div>
-  </div>;
+  </div>
+);
 
 export default Options;
