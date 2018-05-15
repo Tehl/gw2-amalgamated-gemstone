@@ -1,0 +1,24 @@
+.recipe-grid .ingredient-list span {
+  display: block;
+}
+.recipe-grid .item-target {
+  background: #DDF;
+}
+.recipe-grid .item-cheap {
+  background: #DFD;
+}
+.recipe-grid .item-expensive {
+  background: #FDD;
+}
+.display-options select {
+  display: inline-block;
+  margin: 0 10px;
+}
+.display-options .option-sort select {
+  width: 150px;
+}
+.display-options .option-count select {
+  width: 70px;
+}
+
+/*# sourceMappingURL=app-43130573fccf2b8ff427.css.map*/
