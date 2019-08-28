@@ -1315,33 +1315,33 @@ button:hover,
   -moz-osx-font-smoothing: grayscale; }
 
 .kube-calendar:before {
-  content: "\E900"; }
+  content: "\e900"; }
 
 .caret.down:before,
 .kube-caret-down:before {
-  content: "\E901"; }
+  content: "\e901"; }
 
 .caret.left:before,
 .kube-caret-left:before {
-  content: "\E902"; }
+  content: "\e902"; }
 
 .caret.right:before,
 .kube-caret-right:before {
-  content: "\E903"; }
+  content: "\e903"; }
 
 .caret.up:before,
 .kube-caret-up:before {
-  content: "\E904"; }
+  content: "\e904"; }
 
 .close:before,
 .kube-close:before {
-  content: "\E905"; }
+  content: "\e905"; }
 
 .kube-menu:before {
-  content: "\E906"; }
+  content: "\e906"; }
 
 .kube-search:before {
-  content: "\E907"; }
+  content: "\e907"; }
 
 .gutters .column.push-left,
 .push-left {
